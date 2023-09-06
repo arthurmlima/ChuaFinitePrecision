@@ -1,0 +1,95 @@
+{
+  "0": {
+    "basicblocks": 53,
+    "calls": "3",
+    "file": "topfunc.cpp",
+    "fileloc": 10,
+    "instructions": 407,
+    "name": "RK4_LBE",
+    "stores": {
+      "L": 7
+    },
+    "total_instructions": 477
+  },
+  "1": {
+    "basicblocks": 1,
+    "calls": "7",
+    "file": "hls_fabs.h",
+    "fileloc": 12,
+    "instructions": 2,
+    "name": "generic_fabs<float>",
+    "total_instructions": 68
+  },
+  "2": {
+    "basicblocks": 1,
+    "calls": "4",
+    "file": "x_hls_utils.h",
+    "fileloc": 375,
+    "instructions": 2,
+    "name": "to_ieee",
+    "total_instructions": 24
+  },
+  "3": {
+    "basicblocks": 1,
+    "calls": "1",
+    "file": "fabsfloat.cpp",
+    "fileloc": 7,
+    "instructions": 2,
+    "name": "fabsf",
+    "total_instructions": 70
+  },
+  "4": {
+    "basicblocks": 1,
+    "calls": "5",
+    "file": "x_hls_utils.h",
+    "fileloc": 351,
+    "instructions": 5,
+    "loads": {
+      "L": 1
+    },
+    "name": "to_float",
+    "total_instructions": 22
+  },
+  "5": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "x_hls_utils.h",
+    "fileloc": 338,
+    "instructions": 17,
+    "loads": {
+      "L": 4
+    },
+    "name": "data",
+    "stores": {
+      "L": 3
+    },
+    "total_instructions": 17
+  },
+  "6": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "x_hls_utils.h",
+    "fileloc": 312,
+    "instructions": 15,
+    "name": "fp_struct",
+    "stores": {
+      "L": 3
+    },
+    "total_instructions": 15
+  },
+  "7": {
+    "basicblocks": 1,
+    "calls": "6 6 2",
+    "file": "hls_copysign.h",
+    "fileloc": 10,
+    "instructions": 12,
+    "loads": {
+      "L": 1
+    },
+    "name": "generic_copysign<float>",
+    "stores": {
+      "L": 1
+    },
+    "total_instructions": 66
+  }
+}

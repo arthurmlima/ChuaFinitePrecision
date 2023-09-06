@@ -19,9 +19,9 @@ set scriptPath [file dirname [info script]]
 puts "Present location: $scriptPath"
 cd $scriptPath
 set PROJ "ChuaFinitePrecision"
-exec mkdir -p ../hw/ip_repo/
-exec rm -R ../hw/ip_repo/
-exec mkdir -p ../hw/ip_repo/
+exec mkdir -p hw/ip_repo/
+exec rm -R hw/ip_repo/
+exec mkdir -p hw/ip_repo/
 open_project -reset $PROJ
 
 add_files "codes/Header.h" 
@@ -37,7 +37,7 @@ create_clock -period 11 -name default
 
 csim_design -argv {11}
 csynth_design
-export_design -rtl verilog -format ip_catalog -output ../hw/ip_repo/
-exec unzip ../hw/ip_repo/export.zip -d ../hw/ip_repo/
-exec rm -R ../hw/ip_repo/export.zip
+export_design -rtl verilog -format ip_catalog -output hw/ip_repo/
+exec unzip hw/ip_repo/export.zip -d hw/ip_repo/
+exec rm -R hw/ip_repo/export.zip
 exit
