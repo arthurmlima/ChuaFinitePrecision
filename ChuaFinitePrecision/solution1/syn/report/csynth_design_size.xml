@@ -4,13 +4,13 @@
             <header size="6" col0="Function" col1="Location" col2="Compile/Link" col3="Unroll/Inline" col4="Performance/Pipeline" col5="Optimizations"/>
             <rows>
                 <row id="0" col0="RK4_LBE" col1="topfunc.cpp:10" col2="1652" col3="477" col4="353" col5="364">
-                    <row id="3" col0="fabsf" col1="fabsfloat.cpp:7" col2="1036" col3="70" col4="" col5="">
-                        <row id="1" col0="generic_fabs&lt;float&gt;" col1="hls_fabs.h:12" col2="1034" col3="68" col4="" col5="">
-                            <row id="7" col0="generic_copysign&lt;float&gt;" col1="hls_copysign.h:10" col2="1032" col3="66" col4="" col5="">
-                                <row id="6" col0="fp_struct" col1="x_hls_utils.h:312" col2="698" col2_disp="  698 (2 calls)" col3="30" col3_disp=" 30 (2 calls)" col4="" col5=""/>
-                                <row id="2" col0="to_ieee" col1="x_hls_utils.h:375" col2="316" col3="24" col4="" col5="">
-                                    <row id="4" col0="to_float" col1="x_hls_utils.h:351" col2="314" col3="22" col4="" col5="">
-                                        <row id="5" col0="data" col1="x_hls_utils.h:338" col2="296" col3="17" col4="" col5=""/>
+                    <row id="1" col0="fabsf" col1="fabsfloat.cpp:7" col2="1036" col3="70" col4="" col5="">
+                        <row id="27" col0="generic_fabs&lt;float&gt;" col1="hls_fabs.h:12" col2="1034" col3="68" col4="" col5="">
+                            <row id="25" col0="generic_copysign&lt;float&gt;" col1="hls_copysign.h:10" col2="1032" col3="66" col4="" col5="">
+                                <row id="26" col0="fp_struct" col1="x_hls_utils.h:312" col2="698" col2_disp="  698 (2 calls)" col3="30" col3_disp=" 30 (2 calls)" col4="" col5=""/>
+                                <row id="21" col0="to_ieee" col1="x_hls_utils.h:375" col2="316" col3="24" col4="" col5="">
+                                    <row id="19" col0="to_float" col1="x_hls_utils.h:351" col2="314" col3="22" col4="" col5="">
+                                        <row id="20" col0="data" col1="x_hls_utils.h:338" col2="296" col3="17" col4="" col5=""/>
                                     </row>
                                 </row>
                             </row>

@@ -1,7 +1,7 @@
 {
   "0": {
     "basicblocks": 53,
-    "calls": "3",
+    "calls": "6",
     "file": "topfunc.cpp",
     "fileloc": 10,
     "instructions": 407,
@@ -13,7 +13,7 @@
   },
   "1": {
     "basicblocks": 1,
-    "calls": "7",
+    "calls": "4",
     "file": "hls_fabs.h",
     "fileloc": 12,
     "instructions": 2,
@@ -21,36 +21,6 @@
     "total_instructions": 68
   },
   "2": {
-    "basicblocks": 1,
-    "calls": "4",
-    "file": "x_hls_utils.h",
-    "fileloc": 375,
-    "instructions": 2,
-    "name": "to_ieee",
-    "total_instructions": 24
-  },
-  "3": {
-    "basicblocks": 1,
-    "calls": "1",
-    "file": "fabsfloat.cpp",
-    "fileloc": 7,
-    "instructions": 2,
-    "name": "fabsf",
-    "total_instructions": 70
-  },
-  "4": {
-    "basicblocks": 1,
-    "calls": "5",
-    "file": "x_hls_utils.h",
-    "fileloc": 351,
-    "instructions": 5,
-    "loads": {
-      "L": 1
-    },
-    "name": "to_float",
-    "total_instructions": 22
-  },
-  "5": {
     "basicblocks": 1,
     "calls": "",
     "file": "x_hls_utils.h",
@@ -65,21 +35,18 @@
     },
     "total_instructions": 17
   },
-  "6": {
+  "3": {
     "basicblocks": 1,
-    "calls": "",
+    "calls": "5",
     "file": "x_hls_utils.h",
-    "fileloc": 312,
-    "instructions": 15,
-    "name": "fp_struct",
-    "stores": {
-      "L": 3
-    },
-    "total_instructions": 15
+    "fileloc": 375,
+    "instructions": 2,
+    "name": "to_ieee",
+    "total_instructions": 24
   },
-  "7": {
+  "4": {
     "basicblocks": 1,
-    "calls": "6 6 2",
+    "calls": "7 7 3",
     "file": "hls_copysign.h",
     "fileloc": 10,
     "instructions": 12,
@@ -91,5 +58,38 @@
       "L": 1
     },
     "total_instructions": 66
+  },
+  "5": {
+    "basicblocks": 1,
+    "calls": "2",
+    "file": "x_hls_utils.h",
+    "fileloc": 351,
+    "instructions": 5,
+    "loads": {
+      "L": 1
+    },
+    "name": "to_float",
+    "total_instructions": 22
+  },
+  "6": {
+    "basicblocks": 1,
+    "calls": "1",
+    "file": "fabsfloat.cpp",
+    "fileloc": 7,
+    "instructions": 2,
+    "name": "fabsf",
+    "total_instructions": 70
+  },
+  "7": {
+    "basicblocks": 1,
+    "calls": "",
+    "file": "x_hls_utils.h",
+    "fileloc": 312,
+    "instructions": 15,
+    "name": "fp_struct",
+    "stores": {
+      "L": 3
+    },
+    "total_instructions": 15
   }
 }

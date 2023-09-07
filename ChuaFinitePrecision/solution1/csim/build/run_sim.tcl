@@ -9,6 +9,7 @@ set ::env(LD_LIBRARY_PATH) $::env(LD_LIBRARY_PATH):/tools/Xilinx/Vitis_HLS/2023.
 set ::env(LD_LIBRARY_PATH) $::env(LD_LIBRARY_PATH):/tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/fft_v9_1
 set ::env(LD_LIBRARY_PATH) $::env(LD_LIBRARY_PATH):/tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/fir_v7_0
 set ::env(LD_LIBRARY_PATH) $::env(LD_LIBRARY_PATH):/tools/Xilinx/Vitis_HLS/2023.1/lnx64/tools/dds_v6_0
+set ::env(LD_LIBRARY_PATH) $::env(LD_LIBRARY_PATH):/usr/lib/x86_64-linux-gnu
 set ap_argv "11"
 set ::env(LD_LIBRARY_PATH) $::env(LD_LIBRARY_PATH):/tools/Xilinx/Vitis_HLS/2023.1/lnx64/csim
 ### C sim ###
