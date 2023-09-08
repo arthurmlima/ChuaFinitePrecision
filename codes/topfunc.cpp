@@ -7,7 +7,7 @@
 //#define ORBIT_2_ONLY
 #define BOTH_ORBITS
 
-void RK4_LBE_B_64(out_stream &output_stream,unsigned int media) {
+void CCE_B_64(out_stream &output_stream,unsigned int media) {
 #pragma HLS INTERFACE axis port=output_stream
 #pragma HLS INTERFACE s_axilite port=media bundle=CTRL
 #pragma HLS INTERFACE s_axilite port=return bundle=CTRL
@@ -473,6 +473,42 @@ for (int i = 0; i < Iterations; i++){
     output_stream.write(output);
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

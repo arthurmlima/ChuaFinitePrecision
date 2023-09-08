@@ -92,7 +92,7 @@ proc setDefinitionsInMultipleFiles {filenames binaryTuple} {
 proc runWorkflow {binaryTuple replaceValue} {
     # Constants
     set filelist [list "codes/topfunc.cpp" "codes/Header.h" "codes/test_core.cpp"]
-    set searchForList [list "RK4_LBE_1_64" "RK4_LBE_2_64" "RK4_LBE_B_64" "RK4_LBE_1_32" "RK4_LBE_2_32" "RK4_LBE_B_32"]
+    set searchForList [list "CCE_1_64" "CCE_2_64" "CCE_B_64" "CCE_1_32" "CCE_2_32" "CCE_B_32"]
 
     # Use the provided arguments
     set binaryConfig $binaryTuple
@@ -132,11 +132,11 @@ add_files "codes/Header.h"
 add_files "codes/topfunc.cpp"
 add_files -tb "codes/test_core.cpp" 
 
-runWorkflow {1 1 0 0} "RK4_LBE_1_32"
-runWorkflow {1 0 1 0} "RK4_LBE_2_32"
-runWorkflow {1 1 0 0} "RK4_LBE_B_32"
-runWorkflow {0 1 0 0} "RK4_LBE_1_64"
-runWorkflow {0 0 1 0} "RK4_LBE_2_64"
-runWorkflow {0 0 0 1} "RK4_LBE_B_64"
+runWorkflow {1 1 0 0} "CCE_1_32"
+runWorkflow {1 0 1 0} "CCE_2_32"
+runWorkflow {1 0 0 1} "CCE_B_32"
+runWorkflow {0 1 0 0} "CCE_1_64"
+runWorkflow {0 0 1 0} "CCE_2_64"
+runWorkflow {0 0 0 1} "CCE_B_64"
 
 exit

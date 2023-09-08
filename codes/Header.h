@@ -57,10 +57,46 @@ const int Iterations = 90000;
 #endif
 
 
-void RK4_LBE_B_64(out_stream &output_stream,unsigned int media);
+void CCE_B_64(out_stream &output_stream,unsigned int media);
 
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
