@@ -11,7 +11,7 @@
 
 typedef ap_fixed<256,128> data_t;
 
-#define USE_FLOAT
+//#define USE_FLOAT
 const int Iterations = 90000;
 
 #ifdef USE_FLOAT
@@ -57,7 +57,63 @@ const int Iterations = 90000;
 #endif
 
 
-void RK4_LBE(out_stream &output_stream,unsigned int media);
+void RK4_LBE_B_64(out_stream &output_stream,unsigned int media);
 
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,20 +7,16 @@
 #include <iomanip>
 using namespace std;
 
-#define USE_FLOAT
+//#define USE_FLOAT
 
 #ifdef USE_FLOAT
     typedef ap_axis<32,1,1,1> out_sdch_axis;
     typedef hls::stream<out_sdch_axis> out_stream;
-
-
 #endif
 
 #ifndef USE_FLOAT
     typedef ap_axis<64,1,1,1> out_sdch_axis;
     typedef hls::stream<out_sdch_axis> out_stream;
-
-
 #endif
 
 
@@ -34,7 +30,7 @@ conv cValOut;
 cmedia.f = media;
 
 
-RK4_LBE(output_stream,cmedia.i);
+RK4_LBE_B_64(output_stream,cmedia.i);
 
 		for (int idx = 0; idx < Iterations; idx++) {
 			output_stream.read(readValOut);
@@ -44,5 +40,62 @@ RK4_LBE(output_stream,cmedia.i);
 
 		return 0;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
