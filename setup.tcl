@@ -103,15 +103,14 @@ proc runWorkflow {binaryTuple replaceValue} {
 
     set_top $replaceWith
 
-    open_solution -reset "solution1" -flow_target vivado
+    open_solution -reset "solution1"
     set_part {xczu7ev-ffvc1156-2-e}
     create_clock -period 11 -name default
-
+    config_export -format ip_catalog -rtl verilog	
     csynth_design
-    export_design -rtl verilog -format ip_catalog -output hw/ip_repo/
-    exec mv hw/ip_repo/export.zip hw/ip_repo/$replaceWith.zip
-    exec unzip hw/ip_repo/$replaceWith.zip -d hw/ip_repo/$replaceWith
-
+    export_design -format ip_catalog -rtl verilog
+    exec cp -r ChuaFinitePrecision/solution1/impl/ip hw/ip_repo/$replaceWith
+    
     unset binaryConfig
     unset replaceWith
 }

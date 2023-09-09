@@ -12,12 +12,12 @@ set_property ip_repo_paths $scriptPath/ip_repo [current_project]
 proc runWookie { designName } {
     global scriptPath  ;# <-- Access the global variable
 
-create_bd_design $designName
+create_bd_design ${designName}
 update_compile_order -fileset sources_1
-set_property  ip_repo_paths $scriptPath/ip_repo [current_project]
+set_property  ip_repo_paths ${scriptPath}/ip_repo [current_project]
 
 startgroup
-create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.5 zynq_ultra_ps_e_0
+create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.3 zynq_ultra_ps_e_0
 endgroup
 
 startgroup
@@ -41,7 +41,7 @@ set_property -dict [list \
 set_property CONFIG.PSU__USE__S_AXI_GP0 {1} [get_bd_cells zynq_ultra_ps_e_0]
 apply_bd_automation -rule xilinx.com:bd_rule:zynq_ultra_ps_e -config {apply_board_preset "1" }  [get_bd_cells zynq_ultra_ps_e_0]
 startgroup
-create_bd_cell -type ip -vlnv xilinx.com:hls:$designName:1.0 ${designName}
+create_bd_cell -type ip -vlnv xilinx.com:hls:${designName}:1.0 ${designName}
 endgroup
 startgroup
 apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {Auto} Clk_slave {Auto} Clk_xbar {Auto} Master {/zynq_ultra_ps_e_0/M_AXI_HPM0_FPD} Slave {/axi_dma_0/S_AXI_LITE} ddr_seg {Auto} intc_ip {New AXI Interconnect} master_apm {0}}  [get_bd_intf_pins axi_dma_0/S_AXI_LITE]
@@ -66,26 +66,31 @@ endgroup
 regenerate_bd_layout
 
 save_bd_design
-close_bd_design [get_bd_designs $designName]
+close_bd_design [get_bd_designs ${designName}]
 
 update_compile_order -fileset sources_1
-make_wrapper -files [get_files $scriptPath/hw.srcs/sources_1/bd/${designName}/${designName}.bd] -top
-add_files -norecurse $scriptPath/hw.gen/sources_1/bd/${designName}/hdl/${designName}_wrapper.v
+make_wrapper -files [get_files ${scriptPath}/hw.srcs/sources_1/bd/${designName}/${designName}.bd] -top
+update_compile_order -fileset sources_1
 
-create_run synth_${designName} -flow {Vivado Synthesis 2023}
-create_run impl_${designName} -parent_run synth_${designName} -flow {Vivado Implementation 2023}
+add_files -norecurse ${scriptPath}/hw.srcs/sources_1/bd/${designName}/hdl/${designName}_wrapper.v
+update_compile_order -fileset sources_1
+
+
+create_run synth_${designName} -flow {Vivado Synthesis 2019}
+create_run impl_${designName} -parent_run synth_${designName} -flow {Vivado Implementation 2019}
 
 set_property top ${designName}_wrapper [current_fileset]
 update_compile_order -fileset sources_1
-launch_runs impl_${designName} -to_step write_bitstream -jobs 6
+launch_runs impl_${designName} -to_step write_bitstream -jobs 2
 wait_on_run impl_${designName}
 
 
 }
 
-runWookie "RK4_LBE_1_32"
-runWookie "RK4_LBE_2_32"
-runWookie "RK4_LBE_B_32"
-runWookie "RK4_LBE_1_64"
-runWookie "RK4_LBE_2_64"
-runWookie "RK4_LBE_B_64"
+runWookie "CCE_1_32"
+runWookie "CCE_2_32"
+runWookie "CCE_B_32"
+runWookie "CCE_1_64"
+runWookie "CCE_2_64"
+runWookie "CCE_B_64"
+
