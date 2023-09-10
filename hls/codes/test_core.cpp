@@ -21,7 +21,7 @@ using namespace std;
 
 
 int main() {
-
+unsigned int Iterat = 9000;
 out_stream output_stream;
 out_sdch_axis readValOut;
 float media = 0.50097;
@@ -30,9 +30,9 @@ conv cValOut;
 cmedia.f = media;
 
 
-CCE_B_64(output_stream,cmedia.i);
+CCE_B_64(output_stream,cmedia.i,Iterat);
 
-		for (int idx = 0; idx < Iterations; idx++) {
+		for (int idx = 0; idx < Iterat; idx++) {
 			output_stream.read(readValOut);
 			cValOut.i=readValOut.data;
 			cout <<cValOut.f<<endl;
@@ -40,6 +40,44 @@ CCE_B_64(output_stream,cmedia.i);
 
 		return 0;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,7 +12,6 @@
 typedef ap_fixed<256,128> data_t;
 
 //#define USE_FLOAT
-const int Iterations = 90000;
 
 #ifdef USE_FLOAT
     typedef ap_axis<32,1,1,1> out_sdch_axis;
@@ -57,10 +56,48 @@ const int Iterations = 90000;
 #endif
 
 
-void CCE_B_64(out_stream &output_stream,unsigned int media);
+void CCE_B_64(out_stream &output_stream,unsigned int media,unsigned int Iterat);
 
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

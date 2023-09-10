@@ -6,8 +6,8 @@ proc runWookie { designName } {
     if {$board eq "zcu104"} {
         # Replace with actual command/actions for "boardx"
         create_bd_design $designName
-        update_compile_order -fileset sources_1
         set_property  ip_repo_paths $scriptPath/ip_repo [current_project]
+        update_compile_order -fileset sources_1
 
         startgroup
         create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.5 zynq_ultra_ps_e_0
@@ -46,7 +46,6 @@ proc runWookie { designName } {
         startgroup
         create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
         endgroup
-        set_property location {4 986 -1283} [get_bd_cells xlconcat_0]
         connect_bd_net [get_bd_pins axi_dma_0/s2mm_introut] [get_bd_pins xlconcat_0/In0]
         connect_bd_net [get_bd_pins ${designName}/interrupt] [get_bd_pins xlconcat_0/In1]
         connect_bd_net [get_bd_pins xlconcat_0/dout] [get_bd_pins zynq_ultra_ps_e_0/pl_ps_irq0]
@@ -56,6 +55,16 @@ proc runWookie { designName } {
         set_property CONFIG.PSU__USE__M_AXI_GP1 {0} [get_bd_cells zynq_ultra_ps_e_0]
         delete_bd_objs [get_bd_intf_nets zynq_ultra_ps_e_0_M_AXI_HPM1_FPD]
         endgroup
+
+        startgroup
+        set_property CONFIG.PSU__CRL_APB__PL0_REF_CTRL__FREQMHZ {90} [get_bd_cells zynq_ultra_ps_e_0]
+        endgroup
+
+        startgroup
+        create_bd_cell -type ip -vlnv xilinx.com:ip:axi_timer:2.0 axi_timer_0
+        endgroup
+        apply_bd_automation -rule xilinx.com:bd_rule:axi4 -config { Clk_master {/zynq_ultra_ps_e_0/pl_clk0} Clk_slave {Auto} Clk_xbar {/zynq_ultra_ps_e_0/pl_clk0} Master {/zynq_ultra_ps_e_0/M_AXI_HPM0_FPD} Slave {/axi_timer_0/S_AXI} ddr_seg {Auto} intc_ip {/ps8_0_axi_periph} master_apm {0}}  [get_bd_intf_pins axi_timer_0/S_AXI]
+
         regenerate_bd_layout
 
         save_bd_design
@@ -127,11 +136,18 @@ proc runWookie { designName } {
     launch_runs impl_${designName} -to_step write_bitstream -jobs 6
     wait_on_run impl_${designName}
 
-    open_run impl_${designName}
-
     if {![file exists "${scriptPath}/reports"]} {
         file mkdir "${scriptPath}/reports"
     }
+    if {![file exists "${scriptPath}/xsa"]} {
+        file mkdir "${scriptPath}/xsa"
+    }
+    current_run [get_runs synth_CCE_1_32]
+    write_hw_platform -fixed -include_bit -force -file ${scriptPath}/xsa/${designName}.xsa
+
+    open_run impl_${designName}
+
+    
     report_utilization -file "${scriptPath}/reports/utilization_${designName}.rpt"
     report_power -file "${scriptPath}/reports/power_${designName}.rpt"
     report_timing_summary -file "${scriptPath}/reports/timing_${designName}.rpt"

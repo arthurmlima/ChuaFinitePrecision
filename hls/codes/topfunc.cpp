@@ -7,9 +7,10 @@
 //#define ORBIT_2_ONLY
 #define BOTH_ORBITS
 
-void CCE_B_64(out_stream &output_stream,unsigned int media) {
+void CCE_B_64(out_stream &output_stream,unsigned int media,unsigned int Iterat) {
 #pragma HLS INTERFACE axis port=output_stream
 #pragma HLS INTERFACE s_axilite port=media bundle=CTRL
+#pragma HLS INTERFACE s_axilite port=Iterat bundle=CTRL
 #pragma HLS INTERFACE s_axilite port=return bundle=CTRL
 
 
@@ -69,7 +70,7 @@ void CCE_B_64(out_stream &output_stream,unsigned int media) {
 
 #endif
 
-for (int i = 0; i < Iterations; i++){
+for (int i = 0; i < Iterat; i++){
 #pragma HLS PIPELINE off
 
     out_sdch_axis output;
@@ -467,12 +468,49 @@ for (int i = 0; i < Iterations; i++){
     #endif
 
     output.data = dataui.i;
-    output.last = (i == (Iterations - 1)) ? 1 : 0;
+    output.last = (i == (Iterat - 1)) ? 1 : 0;
     output.strb = 0xff;
     output.keep = 0xff;
     output_stream.write(output);
 }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
