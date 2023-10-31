@@ -26,7 +26,13 @@ typedef ap_fixed<256,128> data_t;
     const float Bp = 1.1f;
     const float eq1 = 100000000.0f; // 1/10e-8
     const float eq2 = 10000000.0f;  // 1/100e-9
-    const float eq3 = -(1.0 / (19.0  * pow(10.0, -3.0)));
+    const float eq3 = -(1.0 / (19.0  * powf(10.0f, -3.0f)));
+    const float zero = 0.0f;
+    const float halfm = 0.5f;
+    const float twom = 0.5f;
+
+    const float onem=1.0f;
+    const float sixm=6.0f;
     typedef union {
     	uint32_t i;
     	float f;
@@ -44,10 +50,15 @@ typedef ap_fixed<256,128> data_t;
     const double R = 1800.00;
     const double m0 = -0.00037;    // -0.37 * 10^-3
     const double m1 = -0.00068;    // -0.68 * 10^-3
-    const double Bp = 1.1f;
+    const double Bp = 1.1;
     const double eq1 = 100000000.0; // 1/10e-8
     const double eq2 = 10000000.0;  // 1/100e-9
     const double eq3 = -(1.0 / (19.0  * pow(10.0, -3.0)));
+    const double zero = 0.0;
+    const double halfm = 0.5;
+    const double onem=1.0;
+    const float twom = 2.0;
+    const double sixm=6.0;
     typedef union {
     	uint64_t i;
     	double f;
@@ -60,234 +71,6 @@ void CCE_B_64(out_stream &output_stream,unsigned int media,unsigned int Iterat);
 
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

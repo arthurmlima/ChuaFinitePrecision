@@ -19,26 +19,26 @@ void CCE_B_64(out_stream &output_stream,unsigned int media,unsigned int Iterat) 
 #ifdef USE_FLOAT
 	conv c;
 	c.i=media;
-	float K1 = 0, K2 = 0, K3 = 0, K4 = 0, L1 = 0, L2 = 0, L3 = 0, L4 = 0, M1 = 0, M2 = 0, M3 = 0, M4 = 0;
+	float K1 = 0.0f, K2 = 0.0f, K3 = 0.0f, K4 = 0.0f, L1 = 0.0f, L2 = 0.0f, L3 = 0.0f, L4 = 0.0f, M1 = 0.0f, M2 = 0.0f, M3 = 0.0f, M4 = 0.0f;
 
 
 	float x,y,z;
 	x = c.f;
-	y = -0.2;
-	z = 0.0;
+	y = -0.2f;
+	z = 0.0f;
 
 	float x2,y2,z2;
 	x2 = c.f;
-	y2 = -0.2;
-	z2 = 0.0;
+	y2 = -0.2f;
+	z2 = 0.0f;
 
-	float xeqabs=0.0,xeq=0.0;
+	float xeqabs=0.0f,xeq=0.0f;
 
-	float xd = 0;
+	float xd = 0.0f;
 
-	float yd = 0;
+	float yd = 0.0f;
 
-	float zd = 0;
+	float zd = 0.0f;
 
 	float id;
 
@@ -78,22 +78,21 @@ for (int i = 0; i < Iterat; i++){
 
     #ifdef ORBIT_1_ONLY
         // computations for pseudo-orbit-1
-        K1 = 0;
-		K2 = 0;
-		K3 = 0;
-		K4 = 0;
-		L1 = 0;
-		L2 = 0;
-		L3 = 0;
-		L4 = 0;
-		M1 = 0;
-		M2 = 0;
-		M3 = 0;
-		M4 = 0;
-
-        xd=0;
-        yd=0;
-        zd=0;
+        K1=zero;
+		K2=zero;
+		K3=zero;
+		K4=zero;
+		L1=zero;
+		L2=zero;
+		L3=zero;
+		L4=zero;
+		M1=zero;
+		M2=zero;
+		M3=zero;
+		M4=zero;
+        xd=zero;
+        yd=zero;
+        zd=zero;
 
 		/*This is the begin of pseudo-orbit-1*/
 		if (x > Bp) {
@@ -110,9 +109,9 @@ for (int i = 0; i < Iterat; i++){
 		L1 = eq2 * ( (x - y)/R+z );
 		M1 = eq3 * y;
 
-		xd = x + h * (0.5) * K1;
-		yd = y + h * (0.5) * L1;
-		zd = z + (0.5) * h * M1;
+		xd = x + h * halfm * K1;
+		yd = y + h * halfm * L1;
+		zd = z + halfm * h * M1;
 
 		if (xd > Bp) {
 			id = m0 * xd + Bp * (m1 - m0);
@@ -129,9 +128,9 @@ for (int i = 0; i < Iterat; i++){
 		M2 = eq3 *  yd;
 
 
-		xd = x + h * (0.5) * K2;
-		yd = y + h * (0.5) * L2;
-		zd = z + (0.5) * h * M2;
+		xd = x + h * halfm * K2;
+		yd = y + h * halfm * L2;
+		zd = z + halfm * h * M2;
 
 		if (xd > Bp) {
 			id = m0 * xd + Bp * (m1 - m0);
@@ -164,9 +163,9 @@ for (int i = 0; i < Iterat; i++){
 		L4 = eq2 * ( (xd - yd)/R+zd );
 		M4 = eq3 * yd;
 
-		x = x + h * (1.0 / 6.0) * (K1 + (2.0) * K2 + (2.0) * K3 + K4);
-		y = y + h * (1.0 / 6.0) * (L1 + (2.0) * L2 + (2.0) * L3 + L4);
-		z = z + h * (1.0 / 6.0) * (M1 + (2.0) * M2 + (2.0) * M3 + M4);
+		x = x + h * (onem / sixm) * (K1 + twom * K2 + twom * K3 + K4);
+		y = y + h * (onem / sixm) * (L1 + twom * L2 + twom * L3 + L4);
+		z = z + h * (onem / sixm) * (M1 + twom * M2 + twom * M3 + M4);
 /*This is the end of pseudo-orbit-1*/
 
         dataui.f = x;
@@ -174,22 +173,22 @@ for (int i = 0; i < Iterat; i++){
 
     #ifdef ORBIT_2_ONLY
         // computations for pseudo-orbit-2
-		K1 = 0;
-		K2 = 0;
-		K3 = 0;
-		K4 = 0;
-		L1 = 0;
-		L2 = 0;
-		L3 = 0;
-		L4 = 0;
-		M1 = 0;
-		M2 = 0;
-		M3 = 0;
-		M4 = 0;
+		K1=zero;
+		K2=zero;
+		K3=zero;
+		K4=zero;
+		L1=zero;
+		L2=zero;
+		L3=zero;
+		L4=zero;
+		M1=zero;
+		M2=zero;
+		M3=zero;
+		M4=zero;
 
-        xd=0;
-        yd=0;
-        zd=0;
+        xd=zero;
+        yd=zero;
+        zd=zero;
 
 		/*This is the begin of pseudo-orbit-2*/
 		if (x2 > Bp) {
@@ -208,9 +207,9 @@ for (int i = 0; i < Iterat; i++){
 		M1 = eq3 * y2;
 
 
-		xd = x2 + h * (0.5) * K1;
-		yd = y2 + h * (0.5) * L1;
-		zd = z2 + (0.5) * h * M1;
+		xd = x2 + h * halfm * K1;
+		yd = y2 + h * halfm * L1;
+		zd = z2 + halfm * h * M1;
 
 
 		if (xd > Bp) {
@@ -227,9 +226,9 @@ for (int i = 0; i < Iterat; i++){
 		L2 = eq2 * ( (xd - yd)/R+zd );
 		M2 = eq3 * yd;
 
-		xd = x2 + h * (0.5) * K2;
-		yd = y2 + h * (0.5) * L2;
-		zd = z2 + (0.5) * h * M2;
+		xd = x2 + h * halfm * K2;
+		yd = y2 + h * halfm * L2;
+		zd = z2 + halfm * h * M2;
 
 		if (xd > Bp) {
 			id = m0 * xd + Bp * (m1 - m0);
@@ -265,30 +264,29 @@ for (int i = 0; i < Iterat; i++){
 		M4 = eq3 * yd;
 
 
-		x2 = x2 + h * (1.0 / 6.0) * (K1 + (2.0) * K2 + (2.0) * K3 + K4);
-		y2 = y2 + h * (1.0 / 6.0) * (L1 + (2.0) * L2 + (2.0) * L3 + L4);
-		z2 = z2 + h * (1.0 / 6.0) * (M1 + (2.0) * M2 + (2.0) * M3 + M4);
+		x2 = x2 + h * (onem / sixm) * (K1 + twom * K2 + twom * K3 + K4);
+		y2 = y2 + h * (onem / sixm) * (L1 + twom * L2 + twom * L3 + L4);
+		z2 = z2 + h * (onem / sixm) * (M1 + twom * M2 + twom * M3 + M4);
 /*this is the end of pseudo-orbit-2*/
         dataui.f = x2;
     #endif
 
     #ifdef BOTH_ORBITS
-		K1 = 0;
-		K2 = 0;
-		K3 = 0;
-		K4 = 0;
-		L1 = 0;
-		L2 = 0;
-		L3 = 0;
-		L4 = 0;
-		M1 = 0;
-		M2 = 0;
-		M3 = 0;
-		M4 = 0;
-
-        xd=0;
-        yd=0;
-        zd=0;
+		K1=zero;
+		K2=zero;
+		K3=zero;
+		K4=zero;
+		L1=zero;
+		L2=zero;
+		L3=zero;
+		L4=zero;
+		M1=zero;
+		M2=zero;
+		M3=zero;
+		M4=zero;
+        xd=zero;
+        yd=zero;
+        zd=zero;
         // computations for pseudo-orbit-1
 		/*This is the begin of pseudo-orbit-1*/
 		if (x > Bp) {
@@ -305,9 +303,9 @@ for (int i = 0; i < Iterat; i++){
 		L1 = eq2 * ( (x - y)/R+z );
 		M1 = eq3 * y;
 
-		xd = x + h * (0.5) * K1;
-		yd = y + h * (0.5) * L1;
-		zd = z + (0.5) * h * M1;
+		xd = x + h * halfm * K1;
+		yd = y + h * halfm * L1;
+		zd = z + halfm * h * M1;
 
 		if (xd > Bp) {
 			id = m0 * xd + Bp * (m1 - m0);
@@ -324,9 +322,9 @@ for (int i = 0; i < Iterat; i++){
 		M2 = eq3 *  yd;
 
 
-		xd = x + h * (0.5) * K2;
-		yd = y + h * (0.5) * L2;
-		zd = z + (0.5) * h * M2;
+		xd = x + h * halfm * K2;
+		yd = y + h * halfm * L2;
+		zd = z + halfm * h * M2;
 
 		if (xd > Bp) {
 			id = m0 * xd + Bp * (m1 - m0);
@@ -359,28 +357,28 @@ for (int i = 0; i < Iterat; i++){
 		L4 = eq2 * ( (xd - yd)/R+zd );
 		M4 = eq3 * yd;
 
-		x = x + h * (1.0 / 6.0) * (K1 + (2.0) * K2 + (2.0) * K3 + K4);
-		y = y + h * (1.0 / 6.0) * (L1 + (2.0) * L2 + (2.0) * L3 + L4);
-		z = z + h * (1.0 / 6.0) * (M1 + (2.0) * M2 + (2.0) * M3 + M4);
+		x = x + h * (onem / sixm) * (K1 + twom * K2 + twom * K3 + K4);
+		y = y + h * (onem / sixm) * (L1 + twom * L2 + twom * L3 + L4);
+		z = z + h * (onem / sixm) * (M1 + twom * M2 + twom * M3 + M4);
 /*This is the end of pseudo-orbit-1*/
 
 
-		K1 = 0;
-		K2 = 0;
-		K3 = 0;
-		K4 = 0;
-		L1 = 0;
-		L2 = 0;
-		L3 = 0;
-		L4 = 0;
-		M1 = 0;
-		M2 = 0;
-		M3 = 0;
-		M4 = 0;
+		K1 = zero;
+		K2 = zero;
+		K3 = zero;
+		K4 = zero;
+		L1 = zero;
+		L2 = zero;
+		L3 = zero;
+		L4 = zero;
+		M1 = zero;
+		M2 = zero;
+		M3 = zero;
+		M4 = zero;
 
-        xd=0;
-        yd=0;
-        zd=0;
+        xd=zero;
+        yd=zero;
+        zd=zero;
 
 
 
@@ -401,9 +399,9 @@ for (int i = 0; i < Iterat; i++){
 		M1 = eq3 * y2;
 
 
-		xd = x2 + h * (0.5) * K1;
-		yd = y2 + h * (0.5) * L1;
-		zd = z2 + (0.5) * h * M1;
+		xd = x2 + h * halfm * K1;
+		yd = y2 + h * halfm * L1;
+		zd = z2 + halfm * h * M1;
 
 
 		if (xd > Bp) {
@@ -420,9 +418,9 @@ for (int i = 0; i < Iterat; i++){
 		L2 = eq2 * ( (xd - yd)/R+zd );
 		M2 = eq3 * yd;
 
-		xd = x2 + h * (0.5) * K2;
-		yd = y2 + h * (0.5) * L2;
-		zd = z2 + (0.5) * h * M2;
+		xd = x2 + h * halfm * K2;
+		yd = y2 + h * halfm * L2;
+		zd = z2 + halfm * h * M2;
 
 		if (xd > Bp) {
 			id = m0 * xd + Bp * (m1 - m0);
@@ -458,9 +456,9 @@ for (int i = 0; i < Iterat; i++){
 		M4 = eq3 * yd;
 
 
-		x2 = x2 + h * (1.0 / 6.0) * (K1 + (2.0) * K2 + (2.0) * K3 + K4);
-		y2 = y2 + h * (1.0 / 6.0) * (L1 + (2.0) * L2 + (2.0) * L3 + L4);
-		z2 = z2 + h * (1.0 / 6.0) * (M1 + (2.0) * M2 + (2.0) * M3 + M4);
+		x2 = x2 + h * (onem / sixm) * (K1 + twom * K2 + twom * K3 + K4);
+		y2 = y2 + h * (onem / sixm) * (L1 + twom * L2 + twom * L3 + L4);
+		z2 = z2 + h * (onem / sixm) * (M1 + twom * M2 + twom * M3 + M4);
 /*this is the end of pseudo-orbit-2*/
 
         dataui.f = (x-x2)/2;
@@ -474,238 +472,6 @@ for (int i = 0; i < Iterat; i++){
     output_stream.write(output);
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
